@@ -1,16 +1,19 @@
 package com.iheartradio.demo.idemo.models.entities;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.io.Serializable;
 
 @Entity
 @Data
-public class Station {
+public class Station implements Serializable {
     @Id
     @GeneratedValue
     private Long stationId;

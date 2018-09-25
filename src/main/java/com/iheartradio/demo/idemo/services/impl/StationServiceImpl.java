@@ -22,7 +22,7 @@ public class StationServiceImpl implements StationService {
 
     @Override
     public List<Station> getAllStations() {
-        return null;
+        return (List<Station>) stationRepository.findAll();
     }
 
     @Override
@@ -44,7 +44,8 @@ public class StationServiceImpl implements StationService {
             throw new StationNotFoundException(String.format("Station %s was not found.", name));
         }
 
-        return station.get();    }
+        return station.get();
+    }
 
     @Override
     public List<Station> getStationsByHdEnabled(Boolean enabled) {
