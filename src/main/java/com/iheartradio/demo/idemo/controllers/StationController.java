@@ -18,15 +18,9 @@ public class StationController {
         this.stationService = stationService;
     }
 
-    @GetMapping(value = "/stations/hello")
-    public String hello() {
-        return "Hello listener...";
-    }
-
-
     @GetMapping("/stations")
     public List<Station> retrieveAllStations() {
-        return (List<Station>) stationService.getAllStations();
+        return stationService.getAllStations();
     }
 
     @GetMapping("/stations/id/{id}")
@@ -44,7 +38,6 @@ public class StationController {
         return stationService.getStationsByHdEnabled(hdEnabled);
     }
 
-
     @DeleteMapping("/stations/{id}")
     public void deleteById(@PathVariable long id) {
         stationService.deleteById(id);
@@ -52,7 +45,7 @@ public class StationController {
 
     @PostMapping("/stations")
     public void createOrUpdateStation(@Valid @RequestBody Station station) {
-        Station savedStation = stationService.createOrUpdate(station);
+        stationService.createOrUpdate(station);
     }
 
 

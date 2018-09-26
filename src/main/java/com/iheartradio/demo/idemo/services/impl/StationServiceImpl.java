@@ -31,7 +31,6 @@ public class StationServiceImpl implements StationService {
 
         if(!station.isPresent()) {
             throw new StationNotFoundException(String.format("Station ID %d was not found.", id));
-
         }
 
         return station.get();    }
