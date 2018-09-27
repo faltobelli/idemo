@@ -9,6 +9,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 
 @Entity
@@ -18,6 +19,7 @@ public class Station implements Serializable {
     @GeneratedValue
     private Long stationId;
 
+    @NotBlank
     @Column(nullable = false)
     private String name;
     @ColumnDefault(value = "false")

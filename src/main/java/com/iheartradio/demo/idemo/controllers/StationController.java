@@ -23,27 +23,27 @@ public class StationController {
         return stationService.getAllStations();
     }
 
-    @GetMapping("/stations/id/{id}")
+    @GetMapping("/station/id/{id}")
     public Station retrieveStationById(@PathVariable long id) {
         return stationService.getStationById(id);
     }
 
-    @GetMapping("/stations/name/{name}")
+    @GetMapping("/station/name/{name}")
     public Station retrieveStationByName(@PathVariable String name) {
         return stationService.getStationByName(name);
     }
 
     @GetMapping("/stations/hdenabled/{hdEnabled}")
-    public List<Station> retrieveStationByName(@PathVariable boolean hdEnabled) {
+    public List<Station> retrieveStationByHdEnabled(@PathVariable boolean hdEnabled) {
         return stationService.getStationsByHdEnabled(hdEnabled);
     }
 
-    @DeleteMapping("/stations/{id}")
+    @DeleteMapping("/station/{id}")
     public void deleteById(@PathVariable long id) {
         stationService.deleteById(id);
     }
 
-    @PostMapping("/stations")
+    @PostMapping("/station")
     public void createOrUpdateStation(@Valid @RequestBody Station station) {
         stationService.createOrUpdate(station);
     }

@@ -34,6 +34,26 @@ public class StationTest {
         validate(station, 0);
     }
 
+    @Test
+    public void station_nullName_test() {
+        // given
+        Station station = new Station();
+        // when
+        station.setName(null); station.setHdEnabled(true); station.setCallSign("kann");  station.setStationId(0L);
+        // then
+        validate(station, 1);
+    }
+
+    @Test
+    public void station_blankName_test() {
+        // given
+        Station station = new Station();
+        // when
+        station.setName(""); station.setHdEnabled(true); station.setCallSign("kann");  station.setStationId(0L);
+        // then
+        validate(station, 1);
+    }
+
     private void validate(Station station, int numberViolations) {
         Set<ConstraintViolation<Station>> constraintViolations = validator.validate(station);
 
