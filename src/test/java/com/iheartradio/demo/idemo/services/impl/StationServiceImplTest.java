@@ -74,6 +74,7 @@ public class StationServiceImplTest {
         // when
         Station station = stationService.getStationById(25L);
         // then
+        fail();
     }
 
     @Test
@@ -93,6 +94,7 @@ public class StationServiceImplTest {
         // when
         Station station = stationService.getStationByName(ANY_OLD_STATION);
         // then
+        fail();
     }
 
     @Test
@@ -120,12 +122,23 @@ public class StationServiceImplTest {
     }
 
     @Test
+    public void deleteById_Does_happyPath_test() {
+        // given
+        when(stationRepository.existsById(Mockito.eq(2L))).thenReturn(true);
+        // when
+        stationService.deleteById(2L);
+        // then
+        assertTrue(true);
+    }
+
+    @Test(expected = StationNotFoundException.class)
     public void deleteById_Does_NotThrowException_test() {
         // given
+        when(stationRepository.existsById(Mockito.eq(30L))).thenReturn(false);
         // when
-        stationService.deleteById(3L);
         stationService.deleteById(30L);
         // then
+        fail();
     }
 
 }

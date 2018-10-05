@@ -53,7 +53,11 @@ public class StationServiceImpl implements StationService {
 
     @Override
     public void deleteById(long id) {
+        if (!stationRepository.existsById(id)) {
+            throw new StationNotFoundException(String.format("Station ID %d was not found.", id));
+        }
         stationRepository.deleteById(id);
+
     }
 
     @Override

@@ -24,7 +24,7 @@ public class StationController {
     }
 
     @GetMapping("/station/id/{id}")
-    public Station retrieveStationById(@PathVariable long id) {
+    public Station retrieveStationById(@PathVariable Long id) {
         return stationService.getStationById(id);
     }
 
@@ -44,8 +44,8 @@ public class StationController {
     }
 
     @PostMapping("/station")
-    public void createOrUpdateStation(@Valid @RequestBody Station station) {
-        stationService.createOrUpdate(station);
+    public Boolean createOrUpdateStation(@Valid @RequestBody Station station) {
+        return stationService.createOrUpdate(station) != null ? true : false;
     }
 
 
